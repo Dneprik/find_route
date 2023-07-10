@@ -7,30 +7,30 @@ from trains.models import Train
 
 class RouteForm(forms.Form):
 
-    from_city =forms.ModelChoiceField(label='Откуда', queryset=City.objects.all(), widget=forms.Select(attrs={
+    from_city =forms.ModelChoiceField(label='From', queryset=City.objects.all(), widget=forms.Select(attrs={
         'class': 'form-control js-example-basic-single'
     }))
 
-    to_city = forms.ModelChoiceField(label='Куда', queryset=City.objects.all(), widget=forms.Select(attrs={
+    to_city = forms.ModelChoiceField(label='Where', queryset=City.objects.all(), widget=forms.Select(attrs={
         'class': 'form-control js-example-basic-single'
     }))
 
-    cities = forms.ModelMultipleChoiceField(label='Через города', queryset=City.objects.all(), required=False,
+    cities = forms.ModelMultipleChoiceField(label='Through cities', queryset=City.objects.all(), required=False,
                                             widget=forms.SelectMultiple(attrs={'class': 'form-control js-example-basic-multiple'}
     ))
 
-    travelling_time = forms.IntegerField(label='Время в пути', widget=forms.NumberInput(attrs={
+    travelling_time = forms.IntegerField(label='Time in travel', widget=forms.NumberInput(attrs={
         'class': 'form-control',
-        'placeholder': 'Время в пути'
+        'placeholder': 'Time in travel'
     }))
 
 
 class RouteModelForm(forms.ModelForm):
     name = forms.CharField(
-        label='Название маршрута',
+        label='Name of route',
         widget=forms.TextInput(attrs={
             'class': 'form-control',
-            'placeholder': 'Введите название маршрута'}))
+            'placeholder': 'Enter name of route'}))
     from_city = forms.ModelChoiceField(queryset=City.objects.all(), widget=forms.HiddenInput())
 
     to_city = forms.ModelChoiceField(queryset=City.objects.all(), widget=forms.HiddenInput())

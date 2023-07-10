@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 {% block title %}
-    Список поездов
+    List of trains
 {% endblock %}
 
 {% block content %}
-    <h1> Список поездов </h1>
+    <h1> List of trains </h1>
     <div class="row">
         <div class="col-md-8 mx-auto my-2" >
             <table class="table table-striped">
                 <tr>
-                    <th>Номер</th>
-                    <th>Откуда</th>
-                    <th>Куда</th>
-                    <th>Время в пути</th>
+                    <th>Number</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Travel time</th>
                     <th>&nbsp;</th>
                     <th>&nbsp;</th>
                 </tr>
@@ -28,12 +28,12 @@
                         {% if user.is_authenticated %}
                         <td>
                             <a href="{% url 'trains:update' pk=object.pk%}">
-                                 <button type="submit" class="btn btn-primary">Редактировать</button>
+                                 <button type="submit" class="btn btn-primary">Edit</button>
                              </a>
                         </td>
                         <td>
                             <a href="{% url 'trains:delete' pk=object.pk%}">
-                                 <button type="submit" class="btn btn-danger">Удалить</button>
+                                 <button type="submit" class="btn btn-danger">Delete</button>
                              </a>
                         </td>
                     {% else %}
@@ -51,7 +51,7 @@
 
 
 <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center"">
+  <ul class="pagination justify-content-center">
     <li class="page-item">
         {% if page_obj.has_previous %}
             <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">

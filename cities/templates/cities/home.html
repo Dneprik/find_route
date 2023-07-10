@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block title %}
-    Список городов
+    List of cities
 {% endblock %}
 
 {% block content %}
-    <h1> Список городов </h1>
+    <h1> List of cities </h1>
     <div class="row">
         <div class="col-md-8 mx-auto my-2" >
             <table class="table table-striped">
@@ -16,13 +16,13 @@
                         {% if user.is_authenticated %}
                         <td>
                              <a href="{% url 'cities:update' pk=object.pk%}">
-                                 <button type="submit" class="btn btn-primary">Редактировать</button>
+                                 <button type="submit" class="btn btn-primary">Edit</button>
                              </a>
 
                         </td>
                         <td>
                              <a href="{% url 'cities:delete' pk=object.pk%}">
-                                 <button type="submit" class="btn btn-danger">Удалить</button>
+                                 <button type="submit" class="btn btn-danger">Delete</button>
                              </a>
                         </td>
                         {% else %}
@@ -39,7 +39,7 @@
 
 
 <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center"">
+  <ul class="pagination justify-content-center">
     <li class="page-item">
         {% if page_obj.has_previous %}
             <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
@@ -63,17 +63,17 @@
     </li>
   </ul>
 </nav>
-    {% if user.is_authenticated %}
+{% comment %}    {% if user.is_authenticated %}
     <div class="row">
         <div class="col-md-4">
             <form action="{% url 'cities:create' %}" method="post"> {% csrf_token %}
                 {{ form.as_p }}
 
-                <input type="submit" value="Submit">
+                <input type="submit" value="Save">
             </form>
 
         </div>
     </div>
-    {% endif %}
+    {% endif %}{% endcomment %}
 
 {% endblock %}

@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 {% block title %}
-    Список маршрутов
+    List of routes
 {% endblock %}
 
 {% block content %}
-    <h1> Список маршрутов </h1>
+    <h1> List of routes </h1>
     <div class="row">
         <div class="col-md-8 mx-auto my-2" >
             <table class="table table-striped">
                 <tr>
-                    <th>Название</th>
-                    <th>Откуда</th>
-                    <th>Куда</th>
-                    <th>Время в пути</th>
+                    <th>Name</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Travel time</th>
 
                 </tr>
                 {% for object in page_obj %}

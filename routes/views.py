@@ -31,7 +31,7 @@ def find_routes(request):
         return render(request, 'routes/home.html', {'form': form})
     else:
         form = RouteForm()
-        messages.error(request, "Нет данных для поиска")
+        messages.error(request, "No data")
         return render(request, 'routes/home.html', {'form': form})
 
 
@@ -66,7 +66,7 @@ def add_route(request):
             context['form'] = form
         return render(request, 'routes/create.html', context)
     else:
-        messages.error(request, "Не возможно сохранить не существующий маршрут")
+        messages.error(request, "Unable to save non-existent route")
         return redirect('/')
 
 
@@ -76,11 +76,11 @@ def save_route(request):
         print(form)
         if form.is_valid():
             form.save()
-            messages.success(request, "Маршрут сохранен")
+            messages.success(request, "Route saved")
             return redirect('/')
         return render(request, 'routes/create.html', {'form': form})
     else:
-        messages.error(request, "Не возможно сохранить не существующий маршрут")
+        messages.error(request, "Unable to save non-existent route")
         return redirect('/')
 
 
@@ -102,5 +102,5 @@ class RouteDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('home')
 
     def get(self, request, *args, **kwargs):
-        messages.success(request, "Маршрут успешно удален")
+        messages.success(request, "Route deleted successful ")
         return self.post(request, *args, **kwargs)

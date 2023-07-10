@@ -46,7 +46,7 @@ class TrainCreateView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     form_class = TrainForm
     template_name = 'trains/create.html'
     success_url = reverse_lazy('trains:home')
-    success_message = "Поезд успешно создан"
+    success_message = "Train created successful"
 
 
 class TrainUpdateView(SuccessMessageMixin, LoginRequiredMixin,  UpdateView):
@@ -54,7 +54,7 @@ class TrainUpdateView(SuccessMessageMixin, LoginRequiredMixin,  UpdateView):
     form_class = TrainForm
     template_name = 'trains/update.html'
     success_url = reverse_lazy('trains:home')
-    success_message = "Поезд успешно отредактирован"
+    success_message = "Train edited successful"
 
 
 class TrainDeleteView(LoginRequiredMixin, DeleteView):
@@ -62,7 +62,8 @@ class TrainDeleteView(LoginRequiredMixin, DeleteView):
 #    template_name = 'trains/delete.html'
     success_url = reverse_lazy('trains:home')
 
+
     def get(self, request, *args, **kwargs):
-        messages.success(request, "Поезд успешно удален")
+        messages.success(request, "Train deleted successful")
         return self.post(request, *args, **kwargs)
 

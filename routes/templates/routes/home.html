@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% block title %}
-    Поиск маршрута
+    Find route
 {% endblock %}
 
 {% block content %}
-    <h1> Поиск маршрута </h1>
+    <h1> Find route </h1>
     <div class="row">
         <div class="col-md-8 mx-auto">
             {% if routes %}
-                <h3>Маршрут {% if routes|length != 1 %}ы {% endif %} из города {{ cities.from_city.name }} в город {{ cities.to_city.name }}</h3>
+                <h3>Route{% if routes|length != 1 %}s {% endif %} from city {{ cities.from_city.name }} to city {{ cities.to_city.name }}</h3>
                 <br>
                 {% for route in routes %}
                     <form action="{% url 'add_route' %}" method="post"> {% csrf_token %}
@@ -18,29 +18,27 @@
                         <input type="hidden" name ="trains"
                                value="{% for train in route.trains %}{{ train.id }},{% endfor %}">
 
-                    {% if forloop.first  %} <h4>Самый короткий маршрут</h4> {% endif %}
-                    <h5>Время в пути {{ route.total_time }}</h5>
+                    {% if forloop.first  %} <h4>Short route</h4> {% endif %}
+                    <h5>Time in route {{ route.total_time }}</h5>
 
                     <table class="table">
                       <thead>
                         <tr>
                           <th scope="col">#</th>
-                          <th scope="col">Список поездов по маршруту</th>
-
+                          <th scope="col">List of trains in route</th>
                         </tr>
                       </thead>
                       <tbody>
                        {% for train in route.trains %}
                         <tr>
                           <th scope="row">{{ forloop.counter }}</th>
-                          <td>Поезд {{ train.name }} из г. {{ train.from_city.name }} в г. {{ train.to_city.name }} </td>
-
+                          <td>Train {{ train.name }} from city {{ train.from_city.name }} to city {{ train.to_city.name }} </td>
                         </tr>
                        {% endfor %}
 
                        </tbody>
                     </table>
-                    <button type="submit" class="btn btn-success"> Сохранить </button>
+                    <button type="submit" class="btn btn-success"> Save </button>
 
                     </form>
 
@@ -52,6 +50,6 @@
 
 
 {% url 'find_routes' as action %}
-{% include 'form.html' with button='Найти' action=action%}
+{% include 'form.html' with button='Find' action=action%}
 
 {% endblock %}

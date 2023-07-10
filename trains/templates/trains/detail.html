@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 {% block title %}
-    Выбранный город
+    City
 {% endblock %}
 
 {% block content %}
-    <h1> Город </h1>
+    <h1> City </h1>
     <div class="row">
         <div class="col-md">
 
             <table class="table table-striped">
                 <tr>
-                    <th>Номер</th>
-                    <th>Откуда</th>
-                    <th>Куда</th>
-                    <th>Время в пути</th>
+                    <th>Number</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Travel time</th>
 
                 </tr>
 
@@ -37,7 +37,7 @@
         <div class="col-md4">
             <a href="{% url 'trains:home' %}">
                 <button type="button" class="btn btn-light">
-                    Назад к списку
+                    Return to list
                 </button>
             </a>
         </div>

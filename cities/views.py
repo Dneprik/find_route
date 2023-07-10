@@ -62,30 +62,30 @@ class CityCreateView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     model = City
     form_class = CityForm
     template_name = 'cities/create.html'
-    success_url = reverse_lazy('trains:home')
-    success_message = "Город успешно создан"
+    success_url = reverse_lazy('cities:home')
+    success_message = "City created successful"
 
 
 class CityUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = City
     form_class = CityForm
     template_name = 'cities/update.html'
-    success_url = reverse_lazy('trains:home')
-    success_message = "Город успешно отредактирован"
+    success_url = reverse_lazy('cities:home')
+    success_message = "City edited successful"
 
 
 class CityDeleteView(LoginRequiredMixin, DeleteView):
     model = City
 #    template_name = 'trains/delete.html'
-    success_url = reverse_lazy('trains:home')
+    success_url = reverse_lazy('cities:home')
 
     def get(self, request, *args, **kwargs):
-        messages.success(request, "Город успешно удален")
+        messages.success(request, "City deleted successful")
         return self.post(request, *args, **kwargs)
 
 
 class CityListView(ListView):
-    paginate_by = 2
+    paginate_by = 5
     model = City
     template_name = 'cities/home.html'
 
