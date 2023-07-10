@@ -11,7 +11,7 @@ class RouteForm(forms.Form):
         'class': 'form-control js-example-basic-single'
     }))
 
-    to_city = forms.ModelChoiceField(label='Where', queryset=City.objects.all(), widget=forms.Select(attrs={
+    to_city = forms.ModelChoiceField(label='To', queryset=City.objects.all(), widget=forms.Select(attrs={
         'class': 'form-control js-example-basic-single'
     }))
 

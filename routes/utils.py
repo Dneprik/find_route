@@ -33,7 +33,7 @@ def get_routes(request, form) -> dict:
     travelling_time = data['travelling_time']
     all_ways = list(dfs_paths(graph, from_city.id, to_city.id))
     if not len(all_ways):
-        raise ValueError('Маршрута, удовлетворяющего условиям не существует')
+        raise ValueError('There is no route matching the conditions')
     if cities:
         _cities = [city.id for city in cities]
         right_ways = []
@@ -41,7 +41,7 @@ def get_routes(request, form) -> dict:
             if all(city in route for city in _cities):
                 right_ways.append(route)
         if not right_ways:
-            raise ValueError('Маршрута, через заданные города не существует')
+            raise ValueError('Route through the specified cities does not exist')
     else:
         right_ways = all_ways
     routes = []
@@ -62,7 +62,7 @@ def get_routes(request, form) -> dict:
         if total_time <= travelling_time:
             routes.append(tmp)
     if not routes:
-        raise ValueError('Время в пути больше заданного')
+        raise ValueError('Travel time is longer')
 
     sorted_routes = []
     if len(routes) == 1:
