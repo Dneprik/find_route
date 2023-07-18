@@ -49,6 +49,8 @@ def get_routes(request, form) -> dict:
     for q in qs:
         all_trains.setdefault((q.from_city_id, q.to_city_id), [])
         all_trains[(q.from_city_id, q.to_city_id)].append(q)
+
+
     for route in right_ways:
         tmp = {}
         tmp['trains'] = []
@@ -59,7 +61,10 @@ def get_routes(request, form) -> dict:
             total_time += q.travel_time
             tmp['trains'].append(q)
         tmp['total_time'] = total_time
-        if total_time <= travelling_time:
+        if travelling_time:
+            if total_time <= travelling_time:
+                routes.append(tmp)
+        else:
             routes.append(tmp)
     if not routes:
         raise ValueError('Travel time is longer')
